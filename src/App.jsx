@@ -1,14 +1,33 @@
-import React from "react";
-
-//components
+import React, { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { StoreContext, StoreProvider } from "./contexts/StoreContext";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+import PhoneInterface from "./components/PhoneInterface/PhoneInterface";
+import CallHistory from "./components/CallHistory/CallHistory";
+import Loading from "./components/Common/Loading/Loading";
 
-function App() {
+const App = observer(() => {
+  const { userStore } = useContext(StoreContext);
+
+  const handleLogout = () => {
+    userStore.logOut();
+  };
+
   return (
-    <div>
-      <RegistrationForm />
-    </div>
+    <StoreProvider>
+      {userStore.isSIPConnecting ? (
+        <Loading />
+      ) : !userStore.isRegistered ? (
+        <RegistrationForm />
+      ) : (
+        <main>
+          <button onClick={handleLogout}>Выйти</button>
+          <PhoneInterface />
+          <CallHistory />
+        </main>
+      )}
+    </StoreProvider>
   );
-}
+});
 
 export default App;
