@@ -6,7 +6,7 @@ const IncomingCall = observer(() => {
   const { handleAnswer, handleRefuse, audioRef, callStore } = useIncomingCall();
 
   return (
-    callStore.direction === "incoming" &&
+    callStore.direction === "Входящий" &&
     callStore.callStatus === "Входящий звонок" && (
       <div>
         <div>Входящий звонок</div>
