@@ -1,0 +1,41 @@
+.phoneInterface {
+  max-width: 300px;
+  min-width: 220px;
+  margin: 15px auto;
+}
+
+.screen {
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  margin-bottom: 4px;
+  height: 150px;
+  border-radius: 2px;
+}
+
+.callStatus {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.76);
+  top: 0;
+  right: 15px;
+  font-size: 0.8rem;
+}
+
+.input {
+  position: absolute;
+  max-width: fit-content;
+  text-align: right;
+  border: none;
+  background-color: inherit;
+  bottom: 5px;
+  right: 15px;
+  outline: none;
+}
+
+.hg-button-call {
+  background-color: #4caf50 !important;
+}
+
+.hg-button-hangup {
+  background-color: #f44336 !important;
+}
