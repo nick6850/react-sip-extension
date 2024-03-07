@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../contexts/StoreContext";
+import styles from "./CallDetails.module.scss";
 
 const CallDetails = observer(() => {
   const { callStore } = useContext(StoreContext);
@@ -22,10 +23,12 @@ const CallDetails = observer(() => {
   }, [callStore.callStatus]);
 
   return (
-    callStore.callStatus === "В процессе" && (
-      <div>
-        <div>{callStore.contactNumber}</div>
-        <div>{callDuration}</div>
+    callStore.callStatus !== "" && (
+      <div className={styles.callDetails}>
+        <div className={styles.contactNumber}>{callStore.contactNumber}</div>
+        {callStore.callStatus === "В процессе" && (
+          <div className={styles.callDuration}>{callDuration}</div>
+        )}
       </div>
     )
   );
