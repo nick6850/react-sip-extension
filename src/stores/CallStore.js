@@ -14,16 +14,21 @@ class CallStore {
   }
 
   formatDate(date) {
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 
   setCallSession(call, number, direction = "outgoing") {
     this.currentCall = call;
     this.contactNumber = number;
-    this.direction = direction;
+    this.direction = direction === "incoming" ? "Входящий" : "Исходящий";
 
     if (direction === "incoming") {
       this.setCallStatus("Входящий звонок");
+    } else {
+      this.setCallStatus("Вызов");
     }
   }
 
@@ -40,6 +45,7 @@ class CallStore {
     this.callStartTime = null;
     this.currentCall = null;
     this.direction = "";
+    this.setCallStatus("");
   }
 
   calculateDuration(startTime, endTime) {
@@ -57,19 +63,25 @@ class CallStore {
 
   addToCallHistory(finishReason) {
     if (!this.currentCall) return;
-    this.callStatus = finishReason;
-    const endTime = new Date();
-    const duration = this.calculateDuration(this.callStartTime, endTime);
+
+    let duration;
+    if (finishReason === "Не получилось") {
+      duration = "0 сек";
+    } else {
+      const endTime = new Date();
+      duration = this.calculateDuration(this.callStartTime, endTime);
+    }
 
     let callDetails = {
+      key: this.currentCall.id,
       type: this.direction,
       phoneNumber: this.contactNumber || "Неизвестный номер",
-      startTime: this.formatDate(this.callStartTime || new Date()),
+      date: this.formatDate(this.callStartTime || new Date()),
       duration,
       result: finishReason,
     };
 
-    this.callHistory.unshift(callDetails);
+    this.callHistory = [callDetails, ...this.callHistory];
     this.saveCallHistory();
     this.setCallEnd();
   }
