@@ -8,6 +8,8 @@ import IncomingCall from "./components/IncomingCall/IncomingCall";
 import PhoneInterface from "./components/PhoneInterface/PhoneInterface";
 import CallHistory from "./components/CallHistory/CallHistory";
 
+import styles from "./App.module.scss";
+
 const App = observer(() => {
   const { userStore } = useContext(StoreContext);
 
@@ -23,7 +25,9 @@ const App = observer(() => {
         <RegistrationForm />
       ) : (
         <main>
-          <button onClick={handleLogout}>Выйти</button>
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Выйти
+          </button>
           <IncomingCall />
           <PhoneInterface />
           <CallHistory />
