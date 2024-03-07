@@ -23,7 +23,7 @@ const useIncomingCall = () => {
 
   useEffect(() => {
     if (
-      callStore.direction === "incoming" &&
+      callStore.direction === "Входящий" &&
       callStore.callStatus === "Входящий звонок"
     ) {
       audioRef.current
