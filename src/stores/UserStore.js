@@ -45,15 +45,14 @@ class UserStore {
     // Update user details and save them to local storage
     this.userDetails = { name, serverAddress, uri, user, password };
     localStorage.setItem("userDetails", JSON.stringify(this.userDetails));
-
     // Establish the SIP connection with the updated user details
     this.establishSIPConnection();
   }
 
   logOut() {
-    // Clear user details from localStorage
+    // Clear user details and call history from localStorage
     localStorage.removeItem("userDetails");
-
+    localStorage.removeItem("callHistory");
     // Reset store states
     this.isRegistered = false;
     this.userDetails = {
@@ -68,7 +67,6 @@ class UserStore {
   establishSIPConnection() {
     // Initialize SIP connection using stored URI and server address
     this.isSIPConnecting = true;
-
     initializeSIP(
       this.userDetails.uri,
       this.userDetails.serverAddress,
