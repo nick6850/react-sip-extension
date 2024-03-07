@@ -46,13 +46,13 @@ export const initializeSIP = (
       callStore.addToCallHistory("Завершился");
       setTimeout(() => {
         callStore.setCallStatus("");
-      }, 3000);
+      }, 1500);
     });
     session.on("failed", () => {
       callStore.addToCallHistory("Не получилось");
       setTimeout(() => {
         callStore.setCallStatus("");
-      }, 3000);
+      }, 1500);
     });
   });
 

@@ -45,10 +45,12 @@ class CallStore {
     this.callStartTime = null;
     this.currentCall = null;
     this.direction = "";
-    this.setCallStatus("");
   }
 
   calculateDuration(startTime, endTime) {
+    if (this.callStatus === "Не получилось") {
+      return "0 сек";
+    }
     const durationInSeconds = Math.floor((endTime - startTime) / 1000);
     if (durationInSeconds < 60) {
       return `${durationInSeconds} сек`;
@@ -62,15 +64,8 @@ class CallStore {
   }
 
   addToCallHistory(finishReason) {
-    if (!this.currentCall) return;
-
-    let duration;
-    if (finishReason === "Не получилось") {
-      duration = "0 сек";
-    } else {
-      const endTime = new Date();
-      duration = this.calculateDuration(this.callStartTime, endTime);
-    }
+    this.setCallStatus(finishReason);
+    const duration = this.calculateDuration(this.callStartTime, new Date());
 
     let callDetails = {
       key: this.currentCall.id,
