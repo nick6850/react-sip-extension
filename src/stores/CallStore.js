@@ -59,9 +59,7 @@ class CallStore {
     if (!this.currentCall) return;
     this.callStatus = finishReason;
     const endTime = new Date();
-    const duration = this.callStartTime
-      ? Math.floor((endTime - this.callStartTime) / 1000)
-      : 0;
+    const duration = this.calculateDuration(this.callStartTime, endTime);
 
     let callDetails = {
       type: this.direction,
