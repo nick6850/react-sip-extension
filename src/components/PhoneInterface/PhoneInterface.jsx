@@ -4,6 +4,7 @@ import { StoreContext } from "../../contexts/StoreContext";
 import useOutgoingCall from "../../hooks/useOutgoingCall";
 import { endCall } from "../../utils/SIPService";
 import Keyboard from "react-simple-keyboard";
+import CallDetails from "../CallDetails/CallDetails";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "./PhoneInterface.module.scss";
 
@@ -76,11 +77,14 @@ const PhoneInterface = observer(() => {
     <div className={styles.phoneInterface}>
       <div className={styles.screen}>
         <p className={styles.callStatus}>{callStore.callStatus}</p>
+        <div className={styles.callDetails}>
+          <CallDetails />
+        </div>
         <input
           className={styles.input}
           value={number}
           onChange={handleChange}
-          placeholder="Введите номер"
+          placeholder={callStore.callStatus === "" ? "Введите номер" : ""}
           readOnly={callStore.callStatus !== ""}
         />
       </div>
