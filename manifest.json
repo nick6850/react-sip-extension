@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Reactive Phone",
+  "version": "1.0",
+  "description": "A Chrome extension for softphone functionality, built with React, MobX, and Ant Design.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "webNavigation",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/ringtone.mp3", "assets/keyboard-sound.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
