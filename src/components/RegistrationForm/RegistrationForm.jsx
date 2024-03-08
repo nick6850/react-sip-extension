@@ -68,7 +68,11 @@ const RegistrationForm = () => {
         <Button
           type="primary"
           htmlType="submit"
-          style={{ width: "100%", backgroundColor: "inherit" }}
+          style={{
+            width: "100%",
+            backgroundColor: "inherit",
+            marginBottom: "14px",
+          }}
         >
           Зарегистрироваться
         </Button>

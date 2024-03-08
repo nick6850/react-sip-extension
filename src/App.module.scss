@@ -1,22 +1,41 @@
 main {
-  max-width: 280px;
-  min-height: 519px;
-  height: fit-content;
+  width: 400px;
+  height: 580px;
   background-color: #0000aa;
-  margin: 30px auto;
-  padding: 20px;
+  padding: 13px;
   position: relative;
+
+  .micPermission {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    width: 300px;
+
+    button {
+      margin-top: 15px;
+      border: none;
+      background-color: #ffffff;
+      color: #0000aa;
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
 
   .loading {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 26px;
   }
 
   .logo {
-    width: 105px;
-    height: 105px;
+    width: 120px;
+    height: 120px;
     display: block;
     margin: auto;
   }
@@ -25,7 +44,7 @@ main {
     border: none;
     background-color: inherit;
     color: #d3cece;
-    font-size: 0.8rem;
+    font-size: 1rem;
     position: absolute;
     top: 15px;
     right: 15px;
@@ -33,12 +52,12 @@ main {
 
   .showHistoryButton {
     position: absolute;
-    top: 95.3%;
+    bottom: 9px;
     left: 50%;
     transform: translate(-50%, -50%);
     border: none;
     background-color: inherit;
     color: #d3cece;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }

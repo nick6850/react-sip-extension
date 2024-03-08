@@ -96,9 +96,13 @@ const PhoneInterface = observer(() => {
         }}
         display={{
           "{backspace}": "⌫",
-          "{call}": "&#128222;",
+          "{call}": "📞",
         }}
         buttonTheme={[
+          {
+            class: "backspace",
+            buttons: "{backspace}",
+          },
           {
             class:
               callStore.callStatus === "В процессе" ||

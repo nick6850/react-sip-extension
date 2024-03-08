@@ -1,15 +1,15 @@
 .phoneInterface {
-  max-width: 300px;
-  padding: 4px;
-  border-radius: 2px;
-  margin-bottom: 10px;
+  width: 330px;
+  margin: auto;
+  font-size: 25px;
 }
 
 .screen {
   position: relative;
-  height: 150px;
+  width: 325px;
+  height: 180px;
+  margin-left: 3px;
   margin-bottom: 4px;
-  width: 230px;
   border-radius: 2px;
   background-color: white;
 }
@@ -19,7 +19,7 @@
   color: rgba(0, 0, 0, 0.76);
   top: 2px;
   right: 15px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .callDetails {
@@ -31,6 +31,7 @@
 
 .input {
   position: absolute;
+  font-size: 20px;
   background-color: white;
   max-width: fit-content;
   text-align: right;
@@ -42,10 +43,12 @@
 
 .hg-button-call {
   background-color: #4caf50 !important;
+  font-size: 19px;
   border: none !important;
 }
 
 .hg-button-hangup {
   background-color: #f44336 !important;
+  font-size: 19px;
   border: none !important;
 }

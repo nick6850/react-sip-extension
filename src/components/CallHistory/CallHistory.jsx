@@ -45,7 +45,7 @@ const CallHistory = observer(() => {
   ];
 
   return (
-    <div style={{ overflowY: "visible", marginBottom: "30px" }}>
+    <div style={{ overflowY: "visible" }}>
       <h2>История звонков</h2>
       <Table
         locale={{ emptyText: "История звонков пуста" }}
@@ -53,7 +53,7 @@ const CallHistory = observer(() => {
         dataSource={callStore.callHistory}
         pagination={false}
         showHeader={false}
-        scroll={{ y: 400 }}
+        scroll={{ y: "365px" }}
       />
     </div>
   );
