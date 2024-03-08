@@ -12,7 +12,14 @@ const PhoneInterface = observer(() => {
   const [number, setNumber] = useState("");
   const { callStore } = useContext(StoreContext);
   const { handleMakeCall, audioRef } = useOutgoingCall();
+  const keyboardRef = useRef();
   const audioTappingRef = useRef(new Audio("assets/keyboard-sound.mp3"));
+
+  useEffect(() => {
+    if (keyboardRef.current) {
+      keyboardRef.current.setInput(number);
+    }
+  }, [number]);
 
   useEffect(() => {
     const playTappingSound = () => {
@@ -89,6 +96,7 @@ const PhoneInterface = observer(() => {
         />
       </div>
       <Keyboard
+        keyboardRef={(r) => (keyboardRef.current = r)}
         onChange={setNumber}
         onKeyPress={handleKeyPress}
         layout={{
