@@ -22,18 +22,14 @@ const IncomingCall = observer(() => {
             <PhoneOutlined /> Принять
           </>
         }
-        cancelText={
-          <>
-            <CloseCircleOutlined /> Сбросить
-          </>
-        }
+        cancelText={"Сбросить"}
         okButtonProps={{ type: "primary" }}
         cancelButtonProps={{ type: "danger" }}
-        style={{ maxWidth: 300 }}
+        style={{ maxWidth: "250px" }}
       >
-        <p
-          style={{ fontSize: "1.5em", margin: 0 }}
-        >{`Звонок от ${callStore.contactNumber}`}</p>{" "}
+        <p style={{ fontSize: "1.2em", margin: 0 }}>
+          От: <span>{callStore.contactNumber}</span>
+        </p>
       </Modal>
       <audio ref={audioRef} loop>
         <source src="assets/ringtone.mp3" type="audio/mp3" />

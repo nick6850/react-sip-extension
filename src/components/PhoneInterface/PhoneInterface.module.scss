@@ -9,7 +9,7 @@
   position: relative;
   height: 150px;
   margin-bottom: 4px;
-  width: 98%;
+  width: 230px;
   border-radius: 2px;
   background-color: white;
 }
@@ -17,9 +17,16 @@
 .callStatus {
   position: absolute;
   color: rgba(0, 0, 0, 0.76);
-  top: 0;
+  top: 2px;
   right: 15px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+}
+
+.callDetails {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .input {
