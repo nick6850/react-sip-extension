@@ -49,7 +49,7 @@ export const initializeSIP = (
       }, 1500);
     });
     session.on("failed", () => {
-      callStore.addToCallHistory("Не получилось");
+      callStore.addToCallHistory("Не удалось");
       setTimeout(() => {
         callStore.setCallStatus("");
       }, 1500);

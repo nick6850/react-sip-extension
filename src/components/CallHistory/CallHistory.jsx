@@ -35,9 +35,7 @@ const CallHistory = observer(() => {
           </div>
           <div>
             <strong>Результат:</strong>{" "}
-            <Tag
-              color={record.result === "Не получилось" ? "volcano" : "green"}
-            >
+            <Tag color={record.result === "Не удалось" ? "volcano" : "green"}>
               {record.result}
             </Tag>
           </div>
@@ -47,7 +45,7 @@ const CallHistory = observer(() => {
   ];
 
   return (
-    <div style={{ overflowY: "visible", marginBottom: "10px" }}>
+    <div style={{ overflowY: "visible", marginBottom: "30px" }}>
       <h2>История звонков</h2>
       <Table
         locale={{ emptyText: "История звонков пуста" }}
