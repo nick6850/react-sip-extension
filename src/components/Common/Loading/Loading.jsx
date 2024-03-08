@@ -2,15 +2,9 @@ import React from "react";
 import { Spin } from "antd";
 
 const Loading = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-    }}
-  >
+  <div>
     <Spin size="large" tip="Загрузка..." />
+    <span style={{ color: "white", marginLeft: "15px" }}>Загрузка</span>
   </div>
 );
 
