@@ -31,7 +31,7 @@ export const initializeSIP = (
 
   ua.on("newRTCSession", (data) => {
     const { session } = data;
-    const number = session.local_identity.uri.user;
+    const number = session.remote_identity.uri.user;
 
     if (session.direction === "incoming") {
       callStore.setCallSession(session, number, "incoming");
