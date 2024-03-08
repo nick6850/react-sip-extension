@@ -1,58 +1,79 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { StoreContext } from "../../contexts/StoreContext";
-StoreContext;
+import { Form, Input, Button } from "antd";
 
 const RegistrationForm = () => {
-  const [name, setName] = useState("Владимир");
-  const [server, setServer] = useState("voip.uiscom.ru");
-  const [port, setPort] = useState("");
-  const [user, setUser] = useState("0337861");
-  const [password, setPassword] = useState("dd8F9Cyge9");
   const { userStore } = useContext(StoreContext);
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    userStore.setUserDetails({ name, server, port, user, password });
+  const onFinish = (values) => {
+    userStore.setUserDetails(values);
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Имя"
-        required={true}
-      />
-      <input
-        type="text"
-        value={server}
-        onChange={(e) => setServer(e.target.value)}
-        placeholder="Сервер"
-        required={true}
-      />
-      <input
-        type="text"
-        value={port}
-        onChange={(e) => setPort(e.target.value)}
-        placeholder="Порт (опционально)"
-      />
-      <input
-        type="text"
-        value={user}
-        onChange={(e) => setUser(e.target.value)}
-        placeholder="Логин"
-        required={true}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Пароль"
-        required={true}
-      />
-      <button type="submit">Зарегистрироваться</button>
-    </form>
+    <Form
+      name="registration"
+      onFinish={onFinish}
+      layout="vertical"
+      initialValues={{
+        name: "Владимир",
+        server: "voip.uiscom.ru",
+        user: "0337861",
+        password: "dd8F9Cyge9",
+      }}
+    >
+      <Form.Item
+        label="Имя"
+        name="name"
+        rules={[{ required: true, message: "Пожалуйста, введите ваше имя!" }]}
+        style={{ marginBottom: "4px" }}
+      >
+        <Input style={{ marginBottom: "8px" }} />
+      </Form.Item>
+
+      <Form.Item
+        label="Сервер"
+        name="server"
+        rules={[{ required: true, message: "Пожалуйста, введите сервер!" }]}
+        style={{ marginBottom: "4px" }}
+      >
+        <Input style={{ marginBottom: "8px" }} />
+      </Form.Item>
+
+      <Form.Item label="Порт" name="port" style={{ marginBottom: "4px" }}>
+        <Input
+          placeholder="Порт (опционально)"
+          style={{ marginBottom: "8px" }}
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Логин"
+        name="user"
+        rules={[{ required: true, message: "Пожалуйста, введите логин!" }]}
+        style={{ marginBottom: "0px" }}
+      >
+        <Input style={{ marginBottom: "8px" }} />
+      </Form.Item>
+
+      <Form.Item
+        label="Пароль"
+        name="password"
+        rules={[{ required: true, message: "Пожалуйста, введите пароль!" }]}
+        style={{ marginBottom: "4px" }}
+      >
+        <Input.Password style={{ marginBottom: "14px" }} />
+      </Form.Item>
+
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{ width: "100%", backgroundColor: "inherit" }}
+        >
+          Зарегистрироваться
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 
