@@ -5,7 +5,8 @@ import styles from "./CallDetails.module.scss";
 
 const CallDetails = observer(() => {
   const { callStore } = useContext(StoreContext);
-  const [callDuration, setCallDuration] = useState(null);
+
+  const [callDuration, setCallDuration] = useState("00:00");
 
   useEffect(() => {
     let interval = null;
@@ -18,9 +19,10 @@ const CallDetails = observer(() => {
     }
     return () => {
       clearInterval(interval);
-      setCallDuration(0);
+
+      setCallDuration("00:00");
     };
-  }, [callStore.callStatus]);
+  }, [callStore.callStatus, callStore.callStartTime]);
 
   return (
     callStore.callStatus !== "" && (

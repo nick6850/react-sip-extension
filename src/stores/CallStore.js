@@ -48,19 +48,25 @@ class CallStore {
   }
 
   calculateDuration(startTime, endTime) {
-    if (this.callStatus === "Не получилось") {
-      return "0 сек";
-    }
     const durationInSeconds = Math.floor((endTime - startTime) / 1000);
-    if (durationInSeconds < 60) {
-      return `${durationInSeconds} сек`;
-    } else if (durationInSeconds < 3600) {
-      return `${Math.floor(durationInSeconds / 60)} мин`;
-    } else {
-      return `${Math.floor(durationInSeconds / 3600)} ч ${Math.floor(
-        (durationInSeconds % 3600) / 60
-      )} мин`;
+    if (this.callStatus === "Не удалось") {
+      return "00:00";
     }
+
+    let hours = Math.floor(durationInSeconds / 3600);
+    let minutes = Math.floor((durationInSeconds % 3600) / 60);
+    let seconds = durationInSeconds % 60;
+
+    // Padding numbers to two digits
+    const pad = (num) => (num < 10 ? `0${num}` : num);
+
+    let formattedTime = `${pad(minutes)}:${pad(seconds)}`;
+
+    if (hours > 0) {
+      formattedTime = `${pad(hours)}:${formattedTime}`;
+    }
+
+    return formattedTime;
   }
 
   addToCallHistory(finishReason) {
