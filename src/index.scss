@@ -1,89 +1,39 @@
-/* Box sizing rules */
+@import url(https://db.onlinewebfonts.com/c/b1410f9a0fedbd2de82f5b0fbe45dad5?family=Styrene+UI+Medium+Regular);
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-/* Prevent font size inflation */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
+  font-family: "Styrene UI Medium Regular";
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
+button:hover {
+  cursor: pointer;
+  text-shadow: 0 0 0.6px white;
 }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
+.hg-theme-default {
+  background-color: #0000aa;
 }
 
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
+.hg-button {
+  padding: 0 !important;
+}
+
 label {
-  line-height: 1.1;
+  color: #f4f4f4 !important;
 }
 
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
+.ant-table,
+.ant-tag {
+  font-size: 10px !important;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
+.anticon svg {
+  color: white;
 }
 
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* Make sure textarea without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
+.ant-spin-dot-item {
+  background-color: white !important;
 }
