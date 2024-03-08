@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { Table, Tag } from "antd";
 import { StoreContext } from "../../contexts/StoreContext";
@@ -47,12 +47,15 @@ const CallHistory = observer(() => {
   ];
 
   return (
-    <div className={styles.callHistoryTable}>
+    <div style={{ overflowY: "visible", marginBottom: "10px" }}>
       <h2>История звонков</h2>
       <Table
+        locale={{ emptyText: "История звонков пуста" }}
         columns={columns}
         dataSource={callStore.callHistory}
-        pagination={{ pageSize: 3, showSizeChanger: false }}
+        pagination={false}
+        showHeader={false}
+        scroll={{ y: 400 }}
       />
     </div>
   );
