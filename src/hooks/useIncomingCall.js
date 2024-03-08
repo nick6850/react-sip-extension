@@ -29,19 +29,15 @@ const useIncomingCall = () => {
       audioRef.current
         .play()
         .catch((e) => console.error("Error playing the audio", e));
+    } else {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-    };
   }, [callStore.direction, callStore.callStatus]);
 
   const handleAnswer = () => {
     answerCall(callStore.currentCall);
-    if (audioRef.current) {
+    if (audioRef.current && !audioRef.current.paused) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
