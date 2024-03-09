@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  Скачать упакованную версию: <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist/react-sip-extension.crx">ссылка</a>.<br/> Для установки просто перетащите файл на страницу расширений в Chrome.
+  Скачать упакованную версию: <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist.crx">ссылка</a>.**<br/> Для установки просто перетащите файл на страницу расширений в Chrome.
 </p>
 
 ## Технологический стек
