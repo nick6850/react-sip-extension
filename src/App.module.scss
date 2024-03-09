@@ -1,0 +1,63 @@
+main {
+  width: 400px;
+  height: 580px;
+  background-color: #0000aa;
+  padding: 13px;
+  position: relative;
+
+  .micPermission {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    width: 300px;
+
+    button {
+      margin-top: 15px;
+      border: none;
+      background-color: #ffffff;
+      color: #0000aa;
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+  }
+
+  .logo {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: auto;
+  }
+
+  .logoutButton {
+    border: none;
+    background-color: inherit;
+    color: #d3cece;
+    font-size: 1rem;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .showHistoryButton {
+    position: absolute;
+    bottom: 9px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: inherit;
+    color: #d3cece;
+    font-size: 1rem;
+  }
+}

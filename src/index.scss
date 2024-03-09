@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Styrene UI Medium Regular";
+  src: url("/assets/fonts/styrene-medium.ttf") format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Styrene UI Medium Regular";
+  margin: 0;
+}
+
+body {
+  width: 400px;
+  height: 560px;
+  margin: 0;
+  padding: 0;
+  background-color: #0000aa;
+}
+
+button:hover {
+  cursor: pointer;
+  text-shadow: 0 0 0.6px white;
+}
+
+label {
+  color: #f4f4f4 !important;
+  font-size: 16px !important;
+}
+
+.ant-table,
+.ant-tag {
+  font-size: 15px !important;
+}
+
+.anticon svg {
+  color: white;
+}
+
+.ant-spin-dot-item {
+  background-color: white !important;
+}
+
+.ant-input {
+  font-size: 18px !important;
+}
+
+.ant-btn {
+  font-size: 16px !important;
+}
+
+.hg-button {
+  width: 120px !important;
+  flex-grow: 0 !important;
+}
+
+.hg-theme-default {
+  background-color: #0000aa;
+}
