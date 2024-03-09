@@ -96,7 +96,7 @@
 
 Сначала клонируйте репозиторий на ваше локальное устройство с помощью следующей команды Git:
 
-<code>git clone https://github.com/nick6850/coffee_store.git</code>
+<code>git clone https://github.com/nick6850/react-sip-extension</code>
 
 ### Переход в папку проекта
 
