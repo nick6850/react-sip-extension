@@ -93,13 +93,13 @@ class UserStore {
 
   handleConnectionFailed() {
     console.log("SIP connection failed");
-    this.isSIPConnecting = false;
+    this.resetUserStore();
     this.connectionFailed = true;
   }
 
   handleRegistrationFailed() {
     console.log("SIP registration failed");
-    this.isSIPConnecting = false;
+    this.resetUserStore();
     this.registrationFailed = true;
   }
 

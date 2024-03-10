@@ -34,6 +34,7 @@ export const initializeSIP = (
 
   ua.on("disconnected", () => {
     onConnectionFailed();
+    ua.stop();
   });
 
   ua.on("registered", onRegistered);
