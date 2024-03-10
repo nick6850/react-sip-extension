@@ -72,6 +72,8 @@ const RegistrationForm = () => {
             width: "100%",
             backgroundColor: "inherit",
             marginBottom: "14px",
+
+            boxShadow: "none",
           }}
         >
           Зарегистрироваться
