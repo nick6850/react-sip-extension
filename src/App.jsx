@@ -7,6 +7,7 @@ import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import IncomingCall from "./components/IncomingCall/IncomingCall";
 import PhoneInterface from "./components/PhoneInterface/PhoneInterface";
 import CallHistory from "./components/CallHistory/CallHistory";
+import { endCall } from "./utils/SIPService";
 
 import styles from "./App.module.scss";
 
@@ -15,30 +16,40 @@ const App = observer(() => {
   const [showHistory, setShowHistory] = useState(false);
   const [micPermission, setMicPermission] = useState("default");
 
-  const handleLogout = () => {
-    userStore.logOut();
-  };
+  const handleLogout = () => userStore.logOut();
 
   const toggleHistory = () => {
-    if (callStore.callStatus === "") {
-      setShowHistory(!showHistory);
-    }
+    if (callStore.callStatus === "") setShowHistory(!showHistory);
   };
 
   useEffect(() => {
-    if (callStore.callStatus !== "") {
-      setShowHistory(false);
-    }
+    if (callStore.callStatus !== "") setShowHistory(false);
   }, [callStore.callStatus]);
 
+  //checks if microphone permission is granted
   useEffect(() => {
-    navigator.permissions.query({ name: "microphone" }).then((result) => {
+    const queryMicrophone = async () => {
+      const result = await navigator.permissions.query({ name: "microphone" });
       setMicPermission(result.state);
+      result.onchange = () => setMicPermission(result.state);
+    };
 
-      result.onchange = () => {
-        setMicPermission(result.state);
-      };
-    });
+    queryMicrophone();
+  }, []);
+
+  //ends call if user leaves the extension
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (callStore.currentCall) {
+        endCall(callStore.currentCall);
+      }
+    };
+
+    window.addEventListener("unload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("unload", handleBeforeUnload);
+    };
   }, []);
 
   const openExtensionSettings = () => {
