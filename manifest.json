@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Reactive Phone",
   "version": "1.0",
-  "description": "A Chrome extension for softphone functionality, built with React, MobX, and Ant Design.",
+  "description": "Расширение позволяющее делать звонки с помощью протокола SIP.",
   "icons": {
     "16": "assets/icons/icon16.png",
     "32": "assets/icons/icon32.png",
