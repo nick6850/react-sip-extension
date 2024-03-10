@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Reactive Phone",
+  "version": "1.0",
+  "description": "Расширение позволяющее делать звонки с помощью протокола SIP.",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "webNavigation",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "assets/fonts/styrene-medium.ttf",
+        "assets/ringtone.mp3",
+        "assets/keyboard-sound.mp3"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}
