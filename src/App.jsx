@@ -16,8 +16,6 @@ const App = observer(() => {
   const [showHistory, setShowHistory] = useState(false);
   const [micPermission, setMicPermission] = useState("default");
 
-  const handleLogout = () => userStore.logOut();
-
   const toggleHistory = () => {
     if (callStore.callStatus === "") setShowHistory(!showHistory);
   };
@@ -78,7 +76,10 @@ const App = observer(() => {
         <RegistrationForm />
       ) : (
         <>
-          <button onClick={handleLogout} className={styles.logoutButton}>
+          <button
+            onClick={() => userStore.resetUserStore()}
+            className={styles.logoutButton}
+          >
             Выйти
           </button>
           {showHistory ? (
