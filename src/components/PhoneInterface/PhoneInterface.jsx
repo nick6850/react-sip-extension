@@ -8,26 +8,29 @@ import CallDetails from "../CallDetails/CallDetails";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "./PhoneInterface.module.scss";
 
-const PhoneInterface = observer(({ mainRef }) => {
+const PhoneInterface = observer(() => {
   const [number, setNumber] = useState("");
   const { callStore } = useContext(StoreContext);
   const { handleMakeCall, audioRef } = useOutgoingCall();
   const keyboardRef = useRef();
   const audioTappingRef = useRef(new Audio("assets/keyboard-sound.mp3"));
-  const lastPlayTimeRef = useRef(Date.now());
+  const inputRef = useRef(null);
 
   const playSound = () => {
-    const now = Date.now();
-    if (now - lastPlayTimeRef.current > 100) {
-      const audio = audioTappingRef.current.cloneNode();
-      audio.play();
-      lastPlayTimeRef.current = now;
-    }
+    const audio = audioTappingRef.current.cloneNode();
+    audio.play();
   };
 
   const handleCall = (inputNumber) => {
     if (inputNumber) {
       handleMakeCall(inputNumber);
+      setNumber("");
+    }
+  };
+
+  const handleHangup = () => {
+    if (callStore.currentCall) {
+      endCall(callStore.currentCall);
       setNumber("");
     }
   };
@@ -40,14 +43,16 @@ const PhoneInterface = observer(({ mainRef }) => {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if ("0123456789".includes(event.key)) {
-        setNumber((prevNumber) => prevNumber + event.key);
-        playSound();
-      } else if (event.key === "Backspace") {
-        setNumber((prevNumber) => prevNumber.slice(0, -1));
-        playSound();
-      } else if (event.key === "Enter") {
-        handleCall(number);
+      if (inputRef.current !== document.activeElement) {
+        if ("0123456789".includes(event.key)) {
+          setNumber((prevNumber) => prevNumber + event.key);
+          playSound();
+        } else if (event.key === "Backspace") {
+          setNumber((prevNumber) => prevNumber.slice(0, -1));
+          playSound();
+        } else if (event.key === "Enter") {
+          handleCall(number);
+        }
       }
     };
 
@@ -58,58 +63,26 @@ const PhoneInterface = observer(({ mainRef }) => {
     };
   }, [number, handleCall]);
 
-  useEffect(() => {
-    const playTappingSound = () => {
-      if (callStore.callStatus === "") {
-        playSound();
-      }
-    };
-
-    const keyboardElement = document.querySelector(".simple-keyboard");
-    if (keyboardElement) {
-      keyboardElement.addEventListener("click", playTappingSound);
-    }
-
-    return () => {
-      if (keyboardElement) {
-        keyboardElement.removeEventListener("click", playTappingSound);
-      }
-    };
-  }, [callStore.callStatus]);
-
-  const handleHangup = () => {
-    if (
-      callStore.callStatus === "В процессе" ||
-      callStore.callStatus === "Вызов"
-    ) {
-      endCall(callStore.currentCall);
-      setNumber("");
-    }
-  };
-
   const handleChange = (event) => {
     const input = event.target.value;
     const filteredInput = input.replace(/[^0-9]/g, "");
-    if (callStore.callStatus === "") {
-      setNumber(filteredInput);
-    }
+    setNumber(filteredInput);
   };
 
   const handleKeyPress = (button) => {
     if (button === "{backspace}") {
       setNumber(number.slice(0, -1));
-      playSound();
     } else if (button === "{call}") {
-      if (
+      if (number) {
+        handleCall(number);
+      } else if (
         callStore.callStatus === "В процессе" ||
         callStore.callStatus === "Вызов"
       ) {
         handleHangup();
-      } else {
-        handleCall(number);
-        playSound();
       }
     }
+    playSound();
   };
 
   return (
@@ -120,6 +93,7 @@ const PhoneInterface = observer(({ mainRef }) => {
           <CallDetails />
         </div>
         <input
+          ref={inputRef}
           className={styles.input}
           value={number}
           onChange={handleChange}
