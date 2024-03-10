@@ -1,9 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../contexts/StoreContext";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 
 const RegistrationForm = () => {
   const { userStore } = useContext(StoreContext);
+
+  useEffect(() => {
+    message.config({
+      top: 85,
+      duration: 2,
+      maxCount: 3,
+    });
+
+    if (userStore.connectionFailed) {
+      message.error("Сервер по указанному адресу недоступен");
+    }
+
+    if (userStore.registrationFailed) {
+      message.error("Неправильный логин или пароль");
+    }
+  }, [userStore.connectionFailed, userStore.registrationFailed]);
 
   const onFinish = (values) => {
     userStore.setUserDetails(values);
@@ -39,7 +55,17 @@ const RegistrationForm = () => {
         <Input style={{ marginBottom: "8px" }} />
       </Form.Item>
 
-      <Form.Item label="Порт" name="port" style={{ marginBottom: "4px" }}>
+      <Form.Item
+        label="Порт"
+        name="port"
+        rules={[
+          {
+            pattern: /^[0-9]+$/,
+            message: "Порт должен содержать только цифры",
+          },
+        ]}
+        style={{ marginBottom: "4px" }}
+      >
         <Input
           placeholder="Порт (опционально)"
           style={{ marginBottom: "8px" }}
