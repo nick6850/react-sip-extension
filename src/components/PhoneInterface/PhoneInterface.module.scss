@@ -43,13 +43,17 @@
 }
 
 .hg-button-call {
-  background-color: #4caf50 !important;
+  background-color: #0b9444 !important;
   font-size: 19px;
   border: none !important;
+  color: transparent;
+  text-shadow: 0 0 0 #fffffff3;
 }
 
 .hg-button-hangup {
-  background-color: #f44336 !important;
+  background-color: #a72218 !important;
   font-size: 19px;
   border: none !important;
+  color: transparent;
+  text-shadow: 0 0 0 #fffffff3;
 }
