@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  Скачать упакованную версию: <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist.crx">ссылка</a>.<br/> Для установки просто перетащите файл на страницу расширений в Chrome.
+  Скачать расширение: <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist.crx">ссылка</a>.<br/>Для установки откройте страницу расширений в режиме разработчика в Google Chrome (chrome://extensions/), нажмите "Загрузить распакованное расширение" и выберите скачанную папку "dist".
 </p>
 
 ## Технологический стек
@@ -15,8 +15,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Vite-5.1.4-blue?style=flat-square&logo=vite" alt="Vite 5.1.4" />
   <img src="https://img.shields.io/badge/React-18.2.0-blue?style=flat-square&logo=react" alt="React 18.2.0" />
- <img src="https://img.shields.io/badge/JsSIP-3.10.1-blue?style=flat-square&logo=sip" alt="JsSIP 3.10.1" />
-
+  <img src="https://img.shields.io/badge/JsSIP-3.10.1-blue?style=flat-square&logo=sip" alt="JsSIP 3.10.1" />
   <img src="https://img.shields.io/badge/MobX-6.12.0-blue?style=flat-square&logo=mobx" alt="MobX 6.12.0" />
   <img src="https://img.shields.io/badge/Sass-1.71.1-pink?style=flat-square&logo=sass" alt="Sass 1.71.1" />
   <img src="https://img.shields.io/badge/Ant_Design-5.14.2-blue?style=flat-square&logo=ant-design" alt="Ant Design 5.14.2" />
@@ -123,11 +122,3 @@
 1. Откройте страницу расширений в Google Chrome (chrome://extensions/).
 2. Включите режим разработчика, переключив соответствующую кнопку в правом верхнем углу.
 3. Нажмите кнопку "Загрузить распакованное расширение" и выберите папку `dist` из вашего локального проекта.
-
-### Установка упакованной версии расширения
-
-В качестве альтернативы, вы можете установить упакованную версию расширения, которая находится в корневой папке проекта. Просто перетащите файл расширения (.crx) на страницу расширений в Chrome.
-
-<p align="center">
-  Упакованная версия: <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist.crx">ссылка</a>
-</p>
