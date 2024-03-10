@@ -14,6 +14,16 @@ const PhoneInterface = observer(({ mainRef }) => {
   const { handleMakeCall, audioRef } = useOutgoingCall();
   const keyboardRef = useRef();
   const audioTappingRef = useRef(new Audio("assets/keyboard-sound.mp3"));
+  const lastPlayTimeRef = useRef(Date.now());
+
+  const playSound = () => {
+    const now = Date.now();
+    if (now - lastPlayTimeRef.current > 100) {
+      const audio = audioTappingRef.current.cloneNode();
+      audio.play();
+      lastPlayTimeRef.current = now;
+    }
+  };
 
   const handleCall = (inputNumber) => {
     if (inputNumber) {
@@ -32,10 +42,10 @@ const PhoneInterface = observer(({ mainRef }) => {
     const handleKeyDown = (event) => {
       if ("0123456789".includes(event.key)) {
         setNumber((prevNumber) => prevNumber + event.key);
-        audioTappingRef.current.play();
+        playSound();
       } else if (event.key === "Backspace") {
         setNumber((prevNumber) => prevNumber.slice(0, -1));
-        audioTappingRef.current.play();
+        playSound();
       } else if (event.key === "Enter") {
         handleCall(number);
       }
@@ -51,7 +61,7 @@ const PhoneInterface = observer(({ mainRef }) => {
   useEffect(() => {
     const playTappingSound = () => {
       if (callStore.callStatus === "") {
-        audioTappingRef.current.play();
+        playSound();
       }
     };
 
@@ -88,6 +98,7 @@ const PhoneInterface = observer(({ mainRef }) => {
   const handleKeyPress = (button) => {
     if (button === "{backspace}") {
       setNumber(number.slice(0, -1));
+      playSound();
     } else if (button === "{call}") {
       if (
         callStore.callStatus === "В процессе" ||
@@ -96,6 +107,7 @@ const PhoneInterface = observer(({ mainRef }) => {
         handleHangup();
       } else {
         handleCall(number);
+        playSound();
       }
     }
   };
