@@ -34,12 +34,14 @@ export const initializeSIP = (
 
   ua.on("disconnected", () => {
     onConnectionFailed();
-    ua.stop();
   });
 
   ua.on("registered", onRegistered);
 
-  ua.on("registrationFailed", onRegistrationFailed);
+  ua.on("registrationFailed", () => {
+    onRegistrationFailed();
+    ua.stop();
+  });
 
   ua.on("newRTCSession", (data) => {
     const { session } = data;
