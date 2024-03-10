@@ -12,6 +12,7 @@ export const initializeSIP = (
   serverAddress,
   user,
   password,
+  onConnectionFailed,
   onRegistered,
   onRegistrationFailed
 ) => {
@@ -25,8 +26,19 @@ export const initializeSIP = (
   };
 
   ua = new JsSIP.UA(configuration);
+  ua.start();
+
+  ua.on("connected", () => {
+    console.log("Connected to the WebSocket server");
+  });
+
+  ua.on("disconnected", () => {
+    onConnectionFailed();
+    ua.stop();
+  });
 
   ua.on("registered", onRegistered);
+
   ua.on("registrationFailed", onRegistrationFailed);
 
   ua.on("newRTCSession", (data) => {
@@ -55,8 +67,6 @@ export const initializeSIP = (
       }, 1500);
     });
   });
-
-  ua.start();
 };
 
 export const makeCall = (number) => {
