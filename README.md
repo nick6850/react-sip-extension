@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  Скачать расширение: <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist.zip">ссылка</a>.<br/>Для установки разархивируйте скачанный файл, откройте страницу расширений в режиме разработчика в Google Chrome (chrome://extensions/), нажмите "Загрузить распакованное расширение" и выберите папку "dist".
+  <strong>Скачать расширение:</strong> <a href="https://github.com/nick6850/react-sip-extension/raw/main/dist.zip">ссылка</a>.<br/><strong>Для установки</strong> разархивируйте скачанный файл, откройте страницу расширений в режиме разработчика в Google Chrome (chrome://extensions/), нажмите "Загрузить распакованное расширение" и выберите папку <strong>"dist"</strong>.
 </p>
 
 ## Технологический стек
