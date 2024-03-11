@@ -90,9 +90,16 @@ const App = observer(() => {
               <PhoneInterface />
             </>
           )}
-          <button onClick={toggleHistory} className={styles.showHistoryButton}>
-            {showHistory ? "Назад к звонкам" : "Показать историю"}
-          </button>
+          {callStore.callStatus === "" ? (
+            <button
+              onClick={toggleHistory}
+              className={styles.showHistoryButton}
+            >
+              {showHistory ? "Назад к звонкам" : "Показать историю"}
+            </button>
+          ) : (
+            <span className={styles.footer}>© Made by Никита with ♥️</span>
+          )}
         </>
       )}
     </main>
