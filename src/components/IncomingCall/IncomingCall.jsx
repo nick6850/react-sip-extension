@@ -1,8 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
-import { Modal, Button } from "antd";
-import { PhoneOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { Modal } from "antd";
+import { PhoneOutlined } from "@ant-design/icons";
 import useIncomingCall from "../../hooks/useIncomingCall";
+import styles from "./IncomingCall.module.scss";
 
 const IncomingCall = observer(() => {
   const { handleAnswer, handleRefuse, audioRef, callStore } = useIncomingCall();
@@ -28,7 +29,10 @@ const IncomingCall = observer(() => {
         style={{ maxWidth: "250px" }}
       >
         <p style={{ fontSize: "1.2em", margin: 0 }}>
-          От: <span>{callStore.contactNumber}</span>
+          От:{" "}
+          <span className={styles.contactNumber}>
+            {callStore.contactNumber}
+          </span>
         </p>
       </Modal>
       <audio ref={audioRef} loop>
