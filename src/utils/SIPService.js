@@ -61,13 +61,13 @@ export const initializeSIP = (
       callStore.addToCallHistory("Завершился");
       setTimeout(() => {
         callStore.setCallStatus("");
-      }, 1500);
+      }, 1000);
     });
     session.on("failed", () => {
       callStore.addToCallHistory("Не удалось");
       setTimeout(() => {
         callStore.setCallStatus("");
-      }, 1500);
+      }, 1000);
     });
   });
 };
